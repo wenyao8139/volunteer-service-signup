@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f1ea">
+  <title>CIVIC｜志愿服务报名系统</title>
+  <meta name="description" content="发现志愿服务机会、在线报名、查看报名状态并记录每一次城市行动。">
+  <style>
+    :root{--paper:#f4f1ea;--ink:#111;--red:#e1251b;--muted:rgba(17,17,17,.62);--line:rgba(17,17,17,.76);--soft:rgba(17,17,17,.2)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Helvetica Neue","MiSans","Noto Sans SC","PingFang SC","Microsoft YaHei",Arial,sans-serif}body.lock{overflow:hidden}
+    button,input,select,textarea{font:inherit;color:inherit}button,a{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+    header,.hero,.calls,.opportunities,.impact,footer{width:calc(100% - 72px);max-width:1440px;margin:auto}
+    header{min-height:106px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink)}
+    .brand{display:flex;width:max-content;flex-direction:column;color:inherit;text-decoration:none}.brand b{font-size:3.1rem;font-weight:900;line-height:.84;letter-spacing:-.06em}.brand small{margin-top:8px;font-size:.95rem;font-weight:800;letter-spacing:.08em}
+    nav{display:flex}nav button,.menu{min-height:44px;padding:0 32px;border:0;border-left:1px solid var(--ink);background:transparent;font-weight:800;cursor:pointer}nav button:first-child{border-left:0}nav button:hover{color:var(--red)}.menu{display:none;padding:0}
+    .hero{position:relative;padding:clamp(72px,8vw,124px) 0 62px}.index{position:absolute;top:28px;right:0;display:grid;width:40px;height:40px;place-items:center;background:var(--red);color:#fff;font-weight:800}.eyebrow{margin:0 0 34px;color:var(--muted);font-size:.78rem;font-weight:800;letter-spacing:.12em}
+    h1{max-width:1280px;margin:0;font-size:clamp(4.3rem,7.7vw,7.2rem);font-weight:900;letter-spacing:-.068em;line-height:.84}h1 span{display:block}.hero-cn{margin:24px 0 32px;font-size:clamp(2.7rem,4.8vw,4.5rem);font-weight:900;letter-spacing:-.045em;line-height:1}
+    .cta{display:grid;width:min(520px,100%);min-height:68px;grid-template-columns:2fr 1fr;padding:0;border:1px solid var(--ink);border-radius:0;background:transparent;cursor:pointer;transition:.18s}.cta span{display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-weight:800}.cta span+span{justify-content:center;border-left:1px solid var(--ink)}.cta:hover{background:var(--ink);color:var(--paper)}.cta:hover span+span{border-color:var(--paper)}
+    .calls{padding-bottom:82px}.section-label{display:flex;min-height:50px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink)}.section-label h2{margin:0;font-size:1rem}.section-label button{border:0;background:transparent;font-size:.72rem;font-weight:800;cursor:pointer}.featured{display:grid;grid-template-columns:repeat(3,1fr)}
+    .featured button{position:relative;display:grid;min-height:220px;grid-template-columns:auto 1fr;gap:12px 20px;align-content:start;padding:22px 38px 0 0;border:0;border-right:1px solid var(--line);background:transparent;text-align:left;cursor:pointer}.featured button+button{padding-left:38px}.featured button:last-child{border-right:0;padding-right:0}.featured button:before{position:absolute;top:-1px;left:0;width:0;height:4px;background:var(--red);content:"";transition:.18s}.featured button:hover:before{width:64px}
+    .item-title,.item-no{font-weight:800}.date,.places{grid-column:1/-1;display:flex;align-items:end;gap:18px}.date strong,.places strong{font-size:3.6rem;font-weight:900;letter-spacing:-.06em;line-height:.9}.date span,.places span{font-size:.9rem;font-weight:800}.places{padding-top:12px;border-top:1px solid var(--line)}.places strong{font-size:2.45rem}
+    .opportunities,.impact{padding:110px 0;border-top:1px solid var(--ink)}.section-head{display:grid;grid-template-columns:72px minmax(300px,1.1fr) minmax(260px,.9fr);gap:24px;margin-bottom:72px}.section-no{display:grid;width:40px;height:40px;place-items:center;background:var(--red);color:#fff;font-weight:800}.section-head p{margin:0 0 10px;font-size:.76rem;font-weight:800;letter-spacing:.08em}.section-head h2{margin:0;font-size:clamp(2.7rem,4.2vw,4.5rem);font-weight:900;letter-spacing:-.055em;line-height:.95}.section-head .intro{max-width:430px;margin:0;justify-self:end;font-size:1.05rem;font-weight:500;letter-spacing:0;line-height:1.75}
+    .filters{display:grid;grid-template-columns:2fr 1fr 140px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}.filters label,.result{display:flex;min-height:96px;flex-direction:column;justify-content:center;padding:18px 24px;border-right:1px solid var(--ink)}.filters label span,.result span{margin-bottom:10px;font-size:.65rem;font-weight:800;letter-spacing:.08em}.filters input,.filters select{width:100%;padding:0;border:0;outline:0;background:transparent;font-size:1.18rem;font-weight:800}.result{align-items:end;border:0}.result b{font-size:2rem}
+    .tabs{display:flex;gap:8px 26px;flex-wrap:wrap;padding:26px 0;border-bottom:1px solid var(--ink)}.tabs button{min-height:40px;padding:0;border:0;border-bottom:2px solid transparent;background:transparent;font-weight:800;cursor:pointer}.tabs button.active,.tabs button:hover{border-color:var(--red)}
+    .activity{display:grid;grid-template-columns:1fr 220px;border-bottom:1px solid var(--ink)}.activity-main{display:grid;min-height:168px;grid-template-columns:150px 1.25fr 1fr;gap:24px;align-items:center;padding:24px 34px 24px 0;border:0;border-right:1px solid var(--ink);background:transparent;text-align:left;cursor:pointer}.activity time{display:flex;align-items:end;gap:14px}.activity time strong{font-size:4rem;font-weight:900;letter-spacing:-.06em;line-height:.85}.activity time span{font-size:.72rem;font-weight:800;line-height:1.35}.activity-title p,.activity-title span,.activity-meta span{display:block;margin:0;color:var(--muted);font-size:.73rem;font-weight:800}.activity-title h3{margin:8px 0 5px;font-size:1.55rem}.activity-main:hover h3{text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:6px}.activity-meta{display:grid;gap:10px}.activity-meta span{color:var(--ink);font-size:.82rem}
+    .activity-action{display:flex;flex-direction:column;justify-content:space-between;padding:26px 0 26px 28px}.status{font-size:.7rem;font-weight:800}.status:before{display:inline-block;width:18px;height:3px;margin-right:9px;background:var(--red);content:"";vertical-align:middle}.activity-action button{min-height:48px;border:0;border-bottom:1px solid var(--ink);background:transparent;font-size:.78rem;font-weight:800;text-align:left;cursor:pointer}.activity-action button:hover{color:var(--red)}.activity-action button:disabled{color:var(--muted);cursor:not-allowed}.empty{display:none;min-height:220px;place-items:center;text-align:center}.empty.show{display:grid}
+    .service{width:100%;padding:110px max(36px,calc((100vw - 1440px)/2));background:var(--ink);color:var(--paper)}.service .section-head{max-width:1440px;margin-right:auto;margin-left:auto}.service-list{max-width:1440px;margin:auto;border-top:1px solid rgba(244,241,234,.7)}.service-list article{display:grid;min-height:128px;grid-template-columns:130px 170px 1fr 1.2fr 180px;gap:20px;align-items:center;border-bottom:1px solid rgba(244,241,234,.3)}.service-status{padding-left:20px;font-size:.68rem;font-weight:800}.service-status:before{display:inline-block;width:12px;height:3px;margin:0 8px 2px -20px;background:var(--red);content:""}.service-list time,.ref{color:rgba(244,241,234,.62);font-size:.75rem;font-weight:700}.service-list h3{margin:0 0 5px}.service-list p{margin:4px 0;color:rgba(244,241,234,.62);font-size:.8rem}
+    .impact-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}.impact-grid>div{min-height:230px;padding:32px;border-right:1px solid var(--ink)}.impact-grid>div:nth-child(3){border:0}.impact-grid strong{display:block;font-size:clamp(4rem,7vw,6.8rem);font-weight:900;letter-spacing:-.07em;line-height:.9}.impact-grid span{display:block;margin-top:40px;font-size:.78rem;font-weight:800}.impact-note{grid-column:1/-1!important;display:grid;min-height:180px!important;grid-template-columns:1fr 2fr;align-items:end;border-top:1px solid var(--ink)!important;border-right:0!important}.impact-note p{margin:0;color:var(--red);font-weight:800}.impact-note strong{max-width:760px;justify-self:end;font-size:clamp(1.8rem,3vw,3rem);line-height:1.15;text-align:right}
+    footer{display:grid;min-height:260px;grid-template-columns:1fr 1.3fr;gap:32px;align-content:center;padding:60px 0;border-top:1px solid var(--ink)}footer .brand{grid-row:span 2}footer>p{margin:0;font-weight:800}footer>div{display:flex;gap:24px}footer button{padding:0;border:0;border-bottom:1px solid transparent;background:transparent;font-weight:700;cursor:pointer}footer button:hover{border-color:var(--red)}footer>span{grid-column:2;color:var(--muted);font-size:.7rem}
+    .backdrop{position:fixed;z-index:100;inset:0;display:none;justify-content:end;background:rgba(17,17,17,.52)}.backdrop.open{display:flex}.panel{position:relative;width:min(680px,100%);height:100%;overflow:auto;padding:34px clamp(28px,5vw,70px) 60px;background:var(--paper);animation:in .28s cubic-bezier(.22,1,.36,1)}.close{display:block;min-height:44px;margin:0 0 64px auto;padding:0;border:0;border-bottom:1px solid var(--ink);background:transparent;font-size:.7rem;font-weight:800;cursor:pointer}.kicker{margin:0 0 14px;color:var(--red);font-size:.72rem;font-weight:800;letter-spacing:.08em}.panel h2{margin:0;font-size:clamp(3rem,6vw,5.2rem);font-weight:900;letter-spacing:-.065em;line-height:.95}.panel-sub{margin:12px 0 32px;color:var(--muted);font-weight:700}.facts{display:grid;grid-template-columns:1fr 1fr;margin:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}.facts div{padding:20px 20px 20px 0;border-bottom:1px solid var(--soft)}.facts div:nth-child(odd){border-right:1px solid var(--ink)}.facts div:nth-child(even){padding-left:20px}.facts dt{margin-bottom:8px;color:var(--muted);font-size:.65rem;font-weight:800}.facts dd{margin:0;font-size:.9rem;font-weight:800}.copy{padding:30px 0}.copy h3{margin:0 0 12px;font-size:.74rem}.copy p{margin:0 0 28px;line-height:1.8}.requirements{margin:0;padding:0;list-style:none}.requirements li{display:grid;min-height:50px;grid-template-columns:44px 1fr;align-items:center;border-top:1px solid var(--soft);font-size:.86rem}.requirements span{color:var(--red);font-size:.68rem;font-weight:800}.primary{width:100%;min-height:64px;padding:0 20px;border:1px solid var(--ink);border-radius:0;background:var(--ink);color:var(--paper);font-size:.82rem;font-weight:800;text-align:left;cursor:pointer}.primary:hover{background:var(--red)}.primary:disabled{background:var(--soft);color:var(--muted)}
+    .form-event{margin:16px 0 36px;padding-bottom:20px;border-bottom:1px solid var(--ink);color:var(--muted);font-weight:700}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 18px}.form-grid label{display:block}.form-grid label>span{display:block;margin-bottom:8px;font-size:.65rem;font-weight:800}.form-grid input,.form-grid textarea{width:100%;padding:10px 0;border:0;border-bottom:1px solid var(--ink);border-radius:0;outline:0;background:transparent}.form-grid .wide{grid-column:1/-1}.consent{display:grid!important;grid-template-columns:22px 1fr;gap:10px}.consent input{width:16px;height:16px;margin:2px 0;accent-color:var(--red)}.consent span{line-height:1.55}.note{margin:24px 0;color:var(--muted);font-size:.68rem;line-height:1.6}.success-mark{display:grid;width:40px;height:40px;margin-bottom:36px;place-items:center;background:var(--red);color:#fff;font-weight:900}.success p{line-height:1.75}.success dl{margin:26px 0;border-top:1px solid var(--ink)}.success dl div{display:grid;grid-template-columns:110px 1fr;padding:16px 0;border-bottom:1px solid var(--ink)}.success dt{color:var(--muted);font-size:.7rem;font-weight:800}.success dd{margin:0;font-weight:800}
+    @keyframes in{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+    @media(max-width:980px){header,.hero,.calls,.opportunities,.impact,footer{width:calc(100% - 48px)}nav{display:none}.menu{display:block}.featured button,.featured button+button{padding-right:20px;padding-left:20px}.featured button:first-child{padding-left:0}.section-head{grid-template-columns:54px 1fr}.section-head .intro{grid-column:2;justify-self:start}.activity{grid-template-columns:1fr 170px}.activity-main{grid-template-columns:120px 1fr}.activity-meta{grid-column:2;grid-template-columns:repeat(3,auto)}.service-list article{grid-template-columns:110px 150px 1fr}.service-list article>div:last-of-type,.ref{grid-column:3}}
+    @media(max-width:700px){header,.hero,.calls,.opportunities,.impact,footer{width:calc(100% - 40px)}header{min-height:88px}.brand b{font-size:2.35rem}.brand small{font-size:.76rem}.hero{padding:76px 0 50px}h1{font-size:clamp(3.15rem,15vw,5rem);line-height:.9}.hero-cn{font-size:clamp(2.1rem,10vw,3.5rem)}.cta{grid-template-columns:1fr}.cta span{min-height:54px}.cta span+span{justify-content:flex-start;border-top:1px solid var(--ink);border-left:0}.featured{grid-template-columns:1fr}.featured button,.featured button+button,.featured button:first-child{min-height:188px;padding:22px 0;border-right:0;border-bottom:1px solid var(--ink)}.opportunities,.impact{padding:80px 0}.section-head{grid-template-columns:40px 1fr;gap:16px;margin-bottom:48px}.section-head h2{font-size:clamp(2.4rem,12vw,3.5rem)}.section-head .intro{grid-column:1/-1;margin-top:16px}.filters{grid-template-columns:1fr 105px}.filters label:first-child{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--ink)}.filters label,.result{min-height:82px;padding:14px}.tabs{gap:6px 16px;padding:18px 0}.activity{grid-template-columns:1fr}.activity-main{grid-template-columns:90px 1fr;padding:24px 0;border-right:0}.activity time strong{font-size:3rem}.activity-meta{grid-column:1/-1;grid-template-columns:1fr;padding-top:12px}.activity-action{min-height:94px;padding:16px 0;border-top:1px solid var(--soft)}.service{padding:80px 20px}.service-list article{grid-template-columns:1fr 1fr;gap:12px;padding:22px 0}.service-list article>div,.service-list article>div:last-of-type,.ref{grid-column:1/-1}.impact-grid{grid-template-columns:1fr}.impact-grid>div,.impact-grid>div:nth-child(3){min-height:180px;border-right:0;border-bottom:1px solid var(--ink)}.impact-note{grid-column:1!important;grid-template-columns:1fr;gap:30px}.impact-note strong{justify-self:start;text-align:left}footer{grid-template-columns:1fr}footer .brand{grid-row:auto}footer>span{grid-column:1}footer>div{flex-direction:column;gap:12px}.facts,.form-grid{grid-template-columns:1fr}.facts div,.facts div:nth-child(even),.facts div:nth-child(odd){padding:18px 0;border-right:0;border-bottom:1px solid var(--soft)}.form-grid .wide{grid-column:1}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="#top"><b>CIVIC</b><small>志愿服务平台</small></a>
+    <nav aria-label="主要导航">
+      <button data-go="opportunities">Opportunities</button>
+      <button data-go="service">My Service</button>
+      <button data-go="impact">Impact</button>
+    </nav>
+    <button class="menu" data-go="opportunities">MENU →</button>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="index">01</div>
+      <p class="eyebrow">VOLUNTEER SHENZHEN · 2026</p>
+      <h1><span>Every hour can</span><span>move a city forward.</span></h1>
+      <p class="hero-cn">每一小时，都让城市向前</p>
+      <button class="cta" data-go="opportunities"><span>Explore opportunities →</span><span>发现志愿机会</span></button>
+    </section>
+
+    <section class="calls">
+      <div class="section-label"><h2>OPEN CALLS / 开放报名</h2><button data-go="opportunities">VIEW ALL 06 →</button></div>
+      <div class="featured" id="featured"></div>
+    </section>
+
+    <section class="opportunities" id="opportunities">
+      <div class="section-head">
+        <span class="section-no">02</span>
+        <div><p>FIND YOUR PLACE</p><h2>发现适合你的志愿行动</h2></div>
+        <p class="intro">从一次报名开始，选择与你的时间、技能和关注议题相匹配的行动。</p>
+      </div>
+      <div class="filters">
+        <label><span>SEARCH / 搜索</span><input id="search" type="search" placeholder="活动、地点或类别"></label>
+        <label><span>DISTRICT / 区域</span><select id="district"><option>全部区域</option><option>福田区</option><option>罗湖区</option><option>南山区</option><option>盐田区</option><option>宝安区</option></select></label>
+        <div class="result"><span>RESULTS / 结果</span><b id="result-count">06</b></div>
+      </div>
+      <div class="tabs" id="tabs" aria-label="服务类别"></div>
+      <div id="activity-list"></div>
+      <div class="empty" id="empty"><div><b>NO MATCHES / 暂无匹配活动</b><p>尝试更换服务类别、区域或搜索关键词。</p></div></div>
+    </section>
+
+    <section class="service" id="service">
+      <div class="section-head">
+        <span class="section-no">03</span>
+        <div><p>MY SERVICE</p><h2>我的报名</h2></div>
+        <p class="intro">报名状态、服务时间与活动提醒，集中在同一条清晰的时间线上。</p>
+      </div>
+      <div class="service-list" id="service-list"></div>
+    </section>
+
+    <section class="impact" id="impact">
+      <div class="section-head">
+        <span class="section-no">04</span>
+        <div><p>YOUR IMPACT</p><h2>志愿足迹</h2></div>
+        <p class="intro">不只记录时长，也记录每次行动所连接的人、社区与城市议题。</p>
+      </div>
+      <div class="impact-grid">
+        <div><strong>27.5</strong><span>服务小时 / HOURS</span></div>
+        <div><strong>08</strong><span>完成项目 / PROJECTS</span></div>
+        <div><strong>04</strong><span>关注议题 / CAUSES</span></div>
+        <div class="impact-note"><p>2026</p><strong>一座城市的改变，由无数具体行动共同发生。</strong></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#top"><b>CIVIC</b><small>志愿服务平台</small></a>
+    <p>OPEN, ACCESSIBLE, ACTION-ORIENTED.</p>
+    <div><button data-go="opportunities">发现活动</button><button data-go="service">我的报名</button><button data-go="impact">志愿足迹</button></div>
+    <span>© 2026 CIVIC SHENZHEN</span>
+  </footer>
+
+  <div class="backdrop" id="backdrop">
+    <section class="panel" role="dialog" aria-modal="true" aria-labelledby="panel-title">
+      <button class="close" id="close">CLOSE / 关闭 ×</button>
+      <div id="panel-content"></div>
+    </section>
+  </div>
+
+  <script>
+    const activities=[
+      {id:1,title:"海岸净滩",en:"Coastal Cleanup",day:"03",month:"AUG",year:"2026",date:"2026年8月3日",time:"08:30–11:30",district:"南山区",location:"深圳湾公园日出剧场",category:"生态环保",categoryEn:"Environment",joined:12,capacity:40,hours:3,description:"沿深圳湾海岸线开展净滩、垃圾分类记录与公众倡导，让一次志愿行动同时成为一份城市海岸观察。",requirements:["年满16周岁","可持续完成3小时户外活动","自备饮用水与防晒用品"]},
+      {id:2,title:"阅读陪伴",en:"Reading Companions",day:"09",month:"AUG",year:"2026",date:"2026年8月9日",time:"14:00–17:00",district:"福田区",location:"香蜜公园儿童图书馆",category:"儿童关爱",categoryEn:"Children",joined:8,capacity:24,hours:3,description:"通过绘本共读、故事表达与创意游戏，为儿童提供稳定、友好的阅读陪伴。",requirements:["年满18周岁","普通话表达清晰","活动前完成30分钟线上培训"]},
+      {id:3,title:"长者数字助力",en:"Senior Digital Support",day:"16",month:"AUG",year:"2026",date:"2026年8月16日",time:"09:00–12:00",district:"罗湖区",location:"东湖街道长者服务中心",category:"社区服务",categoryEn:"Community",joined:15,capacity:30,hours:3,description:"一对一帮助长者使用智能手机、线上挂号、交通乘车码及反诈功能，降低数字生活门槛。",requirements:["耐心、善于沟通","熟悉常用智能手机操作","年满16周岁"]},
+      {id:4,title:"无障碍城市观察",en:"Accessible City Walk",day:"22",month:"AUG",year:"2026",date:"2026年8月22日",time:"15:00–18:00",district:"福田区",location:"市民中心及周边街区",category:"城市共建",categoryEn:"Civic Action",joined:19,capacity:24,hours:3,description:"以步行观察和标准化记录，发现公共空间中的无障碍细节，并形成可提交的城市改善建议。",requirements:["可连续步行2公里","自备可拍照手机","遵守隐私与现场记录规范"]},
+      {id:5,title:"城市公园自然导赏",en:"Urban Nature Guide",day:"30",month:"AUG",year:"2026",date:"2026年8月30日",time:"09:30–12:30",district:"盐田区",location:"恩上湿地公园",category:"生态环保",categoryEn:"Environment",joined:20,capacity:20,hours:3,description:"协助自然导师完成签到、路线引导、物种记录与安全提醒，让公众更好地理解城市生物多样性。",requirements:["年满18周岁","活动前完成自然导赏基础培训","适应户外步行"]},
+      {id:6,title:"应急科普开放日",en:"Safety Education Day",day:"06",month:"SEP",year:"2026",date:"2026年9月6日",time:"10:00–16:00",district:"宝安区",location:"宝安区公共安全馆",category:"公共服务",categoryEn:"Public Service",joined:31,capacity:50,hours:6,description:"协助开展应急知识讲解、互动体验引导与现场秩序维护，把安全知识带给更多家庭。",requirements:["年满18周岁","可完成全天服务","具备讲解经验者优先"]}
+    ];
+    const categories=["全部","生态环保","儿童关爱","社区服务","城市共建","公共服务"];
+    let activeCategory="全部",selected=null,mode="detail";
+    let applications=JSON.parse(sessionStorage.getItem("civicApplications")||"null")||[{activityId:2,reference:"CIVIC-260709-1842",status:"已通过"}];
+    const $=s=>document.querySelector(s);
+    const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+    document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>document.getElementById(b.dataset.go).scrollIntoView({behavior:"smooth"}));
+
+    function renderFeatured(){
+      $("#featured").innerHTML=activities.slice(0,3).map((a,i)=>`<button data-id="${a.id}" aria-label="查看${a.title}详情"><span class="item-no">0${i+1}</span><span class="item-title">${a.en} / ${a.title}</span><span class="date"><strong>${a.day}</strong><span>${a.month} ${a.year}</span></span><span class="places"><strong>${a.joined}</strong><span>/ ${a.capacity} PLACES</span></span></button>`).join("");
+      $("#featured").querySelectorAll("button").forEach(b=>b.onclick=()=>openPanel(+b.dataset.id));
+    }
+    function renderTabs(){
+      $("#tabs").innerHTML=categories.map(c=>`<button class="${c===activeCategory?"active":""}" data-cat="${c}">${c}</button>`).join("");
+      $("#tabs").querySelectorAll("button").forEach(b=>b.onclick=()=>{activeCategory=b.dataset.cat;renderTabs();renderActivities()});
+    }
+    function renderActivities(){
+      const q=$("#search").value.trim().toLowerCase(),d=$("#district").value;
+      const list=activities.filter(a=>(activeCategory==="全部"||a.category===activeCategory)&&(d==="全部区域"||a.district===d)&&(!q||`${a.title} ${a.en} ${a.location} ${a.category}`.toLowerCase().includes(q)));
+      $("#result-count").textContent=String(list.length).padStart(2,"0");$("#empty").classList.toggle("show",!list.length);
+      $("#activity-list").innerHTML=list.map(a=>{const left=a.capacity-a.joined,full=left<=0;return `<article class="activity"><button class="activity-main" data-detail="${a.id}"><time><strong>${a.day}</strong><span>${a.month}<br>${a.year}</span></time><div class="activity-title"><p>${a.categoryEn} / ${a.category}</p><h3>${a.title}</h3><span>${a.en}</span></div><div class="activity-meta"><span>${a.district}</span><span>${a.time}</span><span>${a.hours} SERVICE HOURS</span></div></button><div class="activity-action"><span class="status">${full?"FULL / 已满额":`${left} PLACES / 剩余${left}席`}</span><button data-apply="${a.id}" ${full?"disabled":""}>${full?"WAITLIST / 候补":"APPLY / 报名"} →</button></div></article>`}).join("");
+      document.querySelectorAll("[data-detail]").forEach(b=>b.onclick=()=>openPanel(+b.dataset.detail));
+      document.querySelectorAll("[data-apply]").forEach(b=>b.onclick=()=>openPanel(+b.dataset.apply,"form"));
+    }
+    function renderService(){
+      $("#service-list").innerHTML=applications.map(x=>{const a=activities.find(i=>i.id===x.activityId);return `<article><span class="service-status">${x.status==="已通过"?"CONFIRMED":"IN REVIEW"}</span><time>${a.date}</time><div><h3>${a.title}</h3><p>${a.en}</p></div><div><p>${a.time}</p><p>${a.location}</p></div><span class="ref">${esc(x.reference)}</span></article>`}).join("");
+    }
+    function openPanel(id,nextMode="detail"){
+      selected=activities.find(a=>a.id===id);mode=nextMode;$("#backdrop").classList.add("open");document.body.classList.add("lock");renderPanel();
+    }
+    function closePanel(){ $("#backdrop").classList.remove("open");document.body.classList.remove("lock");selected=null;mode="detail" }
+    function renderPanel(){
+      const a=selected;if(!a)return;
+      if(mode==="success"){
+        $("#panel-content").innerHTML=`<div class="success"><span class="success-mark">✓</span><p class="kicker">APPLICATION RECEIVED</p><h2 id="panel-title">报名已提交</h2><p>我们已收到你对“${a.title}”的报名申请。审核结果将通过短信或邮件通知。</p><dl><div><dt>申请编号</dt><dd>${esc(applications[0].reference)}</dd></div><div><dt>当前状态</dt><dd>审核中</dd></div></dl><button class="primary" id="view-service">VIEW MY SERVICE / 查看我的报名 →</button></div>`;
+        $("#view-service").onclick=()=>{closePanel();setTimeout(()=>$("#service").scrollIntoView({behavior:"smooth"}),50)};return;
+      }
+      if(mode==="form"){
+        $("#panel-content").innerHTML=`<form id="apply-form"><p class="kicker">APPLICATION / 志愿报名</p><h2 id="panel-title">${a.title}</h2><p class="form-event">${a.date} · ${a.time} · ${a.district}</p><div class="form-grid"><label><span>姓名 NAME *</span><input name="name" autocomplete="name" required></label><label><span>手机 MOBILE *</span><input name="phone" type="tel" autocomplete="tel" pattern="[0-9+ -]{8,20}" required></label><label><span>电子邮箱 EMAIL *</span><input name="email" type="email" autocomplete="email" required></label><label><span>出生年份 YEAR OF BIRTH *</span><input name="birthYear" type="number" min="1940" max="2010" required></label><label class="wide"><span>相关经验 EXPERIENCE</span><textarea rows="3" placeholder="请简要说明相关服务经验；没有可填写“无”。"></textarea></label><label class="consent wide"><input type="checkbox" required><span>我确认所填信息真实，并同意仅将信息用于本次志愿服务的组织、联络与安全保障。</span></label></div><p class="note">DEMO NOTE / 演示版本：本次提交仅保存在当前浏览会话，不会上传或长期存储。</p><button class="primary" type="submit">SUBMIT APPLICATION / 提交报名 →</button></form>`;
+        $("#apply-form").onsubmit=e=>{e.preventDefault();if(!applications.some(x=>x.activityId===a.id)){applications.unshift({activityId:a.id,reference:`CIVIC-${String(a.id).padStart(2,"0")}${Date.now().toString().slice(-8)}`,status:"审核中"});sessionStorage.setItem("civicApplications",JSON.stringify(applications));renderService()}mode="success";renderPanel()};return;
+      }
+      $("#panel-content").innerHTML=`<p class="kicker">${a.categoryEn} / ${a.category}</p><h2 id="panel-title">${a.title}</h2><p class="panel-sub">${a.en}</p><dl class="facts"><div><dt>DATE / 日期</dt><dd>${a.date}</dd></div><div><dt>TIME / 时间</dt><dd>${a.time}</dd></div><div><dt>LOCATION / 地点</dt><dd>${a.location}</dd></div><div><dt>PLACES / 名额</dt><dd>${a.joined} / ${a.capacity}</dd></div></dl><div class="copy"><h3>ABOUT / 活动说明</h3><p>${a.description}</p><h3>REQUIREMENTS / 报名条件</h3><ol class="requirements">${a.requirements.map((r,i)=>`<li><span>0${i+1}</span>${r}</li>`).join("")}</ol></div><button class="primary" id="apply-now" ${a.joined>=a.capacity?"disabled":""}>${a.joined>=a.capacity?"FULL / 活动已满额":"APPLY NOW / 立即报名 →"}</button>`;
+      if(a.joined<a.capacity)$("#apply-now").onclick=()=>{mode="form";renderPanel()};
+    }
+    $("#close").onclick=closePanel;$("#backdrop").onclick=e=>{if(e.target===e.currentTarget)closePanel()};document.addEventListener("keydown",e=>{if(e.key==="Escape")closePanel()});
+    $("#search").oninput=renderActivities;$("#district").onchange=renderActivities;
+    renderFeatured();renderTabs();renderActivities();renderService();
+  </script>
+</body>
+</html>

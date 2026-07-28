@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <title>CIVIC｜隐私说明</title>
+  <script src="./config.js"></script>
+  <style>
+    :root{--paper:#f4f1ea;--ink:#111;--red:#e1251b;--muted:rgba(17,17,17,.62);--line:rgba(17,17,17,.24)}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Helvetica Neue","MiSans","PingFang SC","Microsoft YaHei",Arial,sans-serif}.shell{width:calc(100% - 48px);max-width:1120px;margin:auto}header{display:flex;min-height:100px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink)}.brand{color:inherit;text-decoration:none}.brand b{display:block;font-size:2.6rem;font-weight:900;letter-spacing:-.06em;line-height:.82}.brand small{display:block;margin-top:7px;font-size:.72rem;font-weight:800;letter-spacing:.08em}header>a:last-child{color:inherit;font-size:.75rem;font-weight:800;text-decoration:none;border-bottom:1px solid var(--ink)}main{display:grid;grid-template-columns:280px 1fr;gap:70px;padding:80px 0 120px}.side{position:sticky;top:32px;align-self:start}.index{display:grid;width:40px;height:40px;place-items:center;background:var(--red);color:#fff;font-weight:800}.side h1{margin:26px 0 18px;font-size:3.6rem;line-height:.92;letter-spacing:-.06em}.side p{color:var(--muted);font-size:.78rem;line-height:1.7}.warning{padding:18px;border:1px solid var(--red);color:var(--red);font-weight:700;line-height:1.6}.content section{padding:0 0 44px;margin-bottom:44px;border-bottom:1px solid var(--ink)}.content h2{margin:0 0 20px;font-size:1.45rem}.content h2 span{margin-right:12px;color:var(--red);font-size:.72rem}.content p,.content li{font-size:.92rem;line-height:1.85}.content ul{padding-left:20px}.meta{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink)}.meta div{padding:18px 0;border-bottom:1px solid var(--line)}.meta div:nth-child(odd){padding-right:20px;border-right:1px solid var(--ink)}.meta div:nth-child(even){padding-left:20px}.meta dt{margin-bottom:6px;color:var(--muted);font-size:.68rem;font-weight:800}.meta dd{margin:0;font-weight:800;line-height:1.5}footer{padding:38px 0;border-top:1px solid var(--ink);color:var(--muted);font-size:.72rem}@media(max-width:760px){main{grid-template-columns:1fr;gap:46px}.side{position:static}.side h1{font-size:3rem}.meta{grid-template-columns:1fr}.meta div:nth-child(odd),.meta div:nth-child(even){padding:18px 0;border-right:0}}
+  </style>
+</head>
+<body>
+  <header class="shell"><a class="brand" href="./"><b>CIVIC</b><small>志愿服务平台</small></a><a href="./">返回首页 →</a></header>
+  <main class="shell">
+    <aside class="side"><span class="index">P</span><h1>隐私说明</h1><p>PRIVACY NOTICE<br>版本生效日期：<span id="effective-date"></span></p></aside>
+    <article class="content">
+      <div class="warning" id="warning" hidden>本页面的运营主体、联系方式或保存期限尚未配置，系统不得正式开放收集报名信息。</div>
+      <section><h2><span>01</span>谁在处理你的信息</h2><dl class="meta"><div><dt>个人信息处理者</dt><dd id="operator"></dd></div><div><dt>隐私联系渠道</dt><dd id="contact"></dd></div></dl></section>
+      <section><h2><span>02</span>我们收集哪些信息</h2><p>为完成志愿活动报名与组织，我们收集姓名、手机号码、电子邮箱、出生年份、你主动填写的相关服务经验，以及报名活动、报名时间、审核状态和管理员备注。系统还会保存经过不可逆摘要处理的来源 IP，并记录有限的浏览器标识，用于防止滥用和安全审计。</p></section>
+      <section><h2><span>03</span>处理目的与方式</h2><ul><li>核验报名资格、管理活动名额并联系报名者；</li><li>进行报名审核、候补、取消和现场服务安排；</li><li>查询报名状态、处理咨询与争议；</li><li>防止重复报名、恶意提交和未授权访问。</li></ul><p>敏感字段在服务端加密后存储，只有经过身份验证的管理员能够在履行上述职责时查看。我们不会将报名信息用于广告画像或出售给第三方。</p></section>
+      <section><h2><span>04</span>保存地点与期限</h2><p>数据保存在中国大陆地域的腾讯 CloudBase 环境中。保存期限为：<strong id="retention"></strong>。达到保存期限或处理目的已经实现后，我们将删除或匿名化处理相关个人信息；法律法规另有要求的除外。</p></section>
+      <section><h2><span>05</span>共享与受托处理</h2><p>为提供云数据库、云托管、安全防护和网络传输服务，腾讯云可能作为受托服务提供方处理必要数据。除取得你的单独同意或法律法规另有规定外，我们不会向其他个人信息处理者提供或公开你的个人信息。</p></section>
+      <section><h2><span>06</span>你的权利</h2><p>你可以通过上方隐私联系渠道申请查阅、复制、更正、补充或删除个人信息，撤回同意，或要求解释本说明。为保护账户与报名安全，我们可能在处理请求前核验你的身份。</p></section>
+      <section><h2><span>07</span>未成年人</h2><p>本系统仅接受年满 16 周岁的报名者。16 至 17 周岁的报名者应在监护人知情的情况下报名；具体活动如有更高年龄要求，以活动页面为准。</p></section>
+      <section><h2><span>08</span>安全与变更</h2><p>我们采用传输加密、字段加密、访问控制、限流和操作留痕等措施保护信息。如处理目的、方式、种类或保存期限发生实质变化，我们会更新本说明，并在依法需要时重新取得同意。</p></section>
+    </article>
+  </main>
+  <footer class="shell">© 2026 CIVIC SHENZHEN · 本说明应由运营主体结合实际业务与专业法律意见确认后发布。</footer>
+  <script>
+    const cfg=window.CIVIC_CONFIG||{};
+    const missing=!cfg.operatorName||!cfg.privacyContact||!cfg.retentionPeriod||!cfg.privacyEffectiveDate;
+    document.querySelector("#warning").hidden=!missing;
+    document.querySelector("#operator").textContent=cfg.operatorName||"待配置";
+    document.querySelector("#contact").textContent=cfg.privacyContact||"待配置";
+    document.querySelector("#retention").textContent=cfg.retentionPeriod||"待配置";
+    document.querySelector("#effective-date").textContent=cfg.privacyEffectiveDate||"待配置";
+  </script>
+</body>
+</html>

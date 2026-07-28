@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#f4f1ea">
   <title>CIVIC｜志愿服务报名系统</title>
   <meta name="description" content="发现志愿服务机会、在线报名、查看报名状态并记录每一次城市行动。">
+  <script src="./config.js"></script>
   <style>
     :root{--paper:#f4f1ea;--ink:#111;--red:#e1251b;--muted:rgba(17,17,17,.62);--line:rgba(17,17,17,.76);--soft:rgba(17,17,17,.2)}
     *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Helvetica Neue","MiSans","Noto Sans SC","PingFang SC","Microsoft YaHei",Arial,sans-serif}body.lock{overflow:hidden}
@@ -25,14 +26,14 @@
     .tabs{display:flex;gap:8px 26px;flex-wrap:wrap;padding:26px 0;border-bottom:1px solid var(--ink)}.tabs button{min-height:40px;padding:0;border:0;border-bottom:2px solid transparent;background:transparent;font-weight:800;cursor:pointer}.tabs button.active,.tabs button:hover{border-color:var(--red)}
     .activity{display:grid;grid-template-columns:1fr 220px;border-bottom:1px solid var(--ink)}.activity-main{display:grid;min-height:168px;grid-template-columns:150px 1.25fr 1fr;gap:24px;align-items:center;padding:24px 34px 24px 0;border:0;border-right:1px solid var(--ink);background:transparent;text-align:left;cursor:pointer}.activity time{display:flex;align-items:end;gap:14px}.activity time strong{font-size:4rem;font-weight:900;letter-spacing:-.06em;line-height:.85}.activity time span{font-size:.72rem;font-weight:800;line-height:1.35}.activity-title p,.activity-title span,.activity-meta span{display:block;margin:0;color:var(--muted);font-size:.73rem;font-weight:800}.activity-title h3{margin:8px 0 5px;font-size:1.55rem}.activity-main:hover h3{text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:6px}.activity-meta{display:grid;gap:10px}.activity-meta span{color:var(--ink);font-size:.82rem}
     .activity-action{display:flex;flex-direction:column;justify-content:space-between;padding:26px 0 26px 28px}.status{font-size:.7rem;font-weight:800}.status:before{display:inline-block;width:18px;height:3px;margin-right:9px;background:var(--red);content:"";vertical-align:middle}.activity-action button{min-height:48px;border:0;border-bottom:1px solid var(--ink);background:transparent;font-size:.78rem;font-weight:800;text-align:left;cursor:pointer}.activity-action button:hover{color:var(--red)}.activity-action button:disabled{color:var(--muted);cursor:not-allowed}.empty{display:none;min-height:220px;place-items:center;text-align:center}.empty.show{display:grid}
-    .service{width:100%;padding:110px max(36px,calc((100vw - 1440px)/2));background:var(--ink);color:var(--paper)}.service .section-head{max-width:1440px;margin-right:auto;margin-left:auto}.service-list{max-width:1440px;margin:auto;border-top:1px solid rgba(244,241,234,.7)}.service-list article{display:grid;min-height:128px;grid-template-columns:130px 170px 1fr 1.2fr 180px;gap:20px;align-items:center;border-bottom:1px solid rgba(244,241,234,.3)}.service-status{padding-left:20px;font-size:.68rem;font-weight:800}.service-status:before{display:inline-block;width:12px;height:3px;margin:0 8px 2px -20px;background:var(--red);content:""}.service-list time,.ref{color:rgba(244,241,234,.62);font-size:.75rem;font-weight:700}.service-list h3{margin:0 0 5px}.service-list p{margin:4px 0;color:rgba(244,241,234,.62);font-size:.8rem}
+    .service{width:100%;padding:110px max(36px,calc((100vw - 1440px)/2));background:var(--ink);color:var(--paper)}.service .section-head{max-width:1440px;margin-right:auto;margin-left:auto}.lookup{display:grid;max-width:1440px;grid-template-columns:1fr 1fr auto;margin:0 auto 44px;border-top:1px solid rgba(244,241,234,.7);border-bottom:1px solid rgba(244,241,234,.7)}.lookup label{min-height:96px;padding:18px 24px;border-right:1px solid rgba(244,241,234,.42)}.lookup label span{display:block;margin-bottom:10px;color:rgba(244,241,234,.65);font-size:.65rem;font-weight:800}.lookup input{width:100%;padding:0;border:0;border-bottom:1px solid rgba(244,241,234,.45);background:transparent;color:var(--paper);outline:0;font-size:1rem;font-weight:800}.lookup button{min-width:190px;border:0;background:var(--red);color:#fff;font-size:.75rem;font-weight:800;cursor:pointer}.lookup button:disabled{opacity:.55;cursor:not-allowed}.service-list{max-width:1440px;margin:auto;border-top:1px solid rgba(244,241,234,.7)}.service-list article{display:grid;min-height:128px;grid-template-columns:130px 170px 1fr 1.2fr 180px;gap:20px;align-items:center;border-bottom:1px solid rgba(244,241,234,.3)}.service-status{padding-left:20px;font-size:.68rem;font-weight:800}.service-status:before{display:inline-block;width:12px;height:3px;margin:0 8px 2px -20px;background:var(--red);content:""}.service-list time,.ref{color:rgba(244,241,234,.62);font-size:.75rem;font-weight:700}.service-list h3{margin:0 0 5px}.service-list p{margin:4px 0;color:rgba(244,241,234,.62);font-size:.8rem}.service-message{max-width:1440px;min-height:88px;margin:auto;padding:28px 0;border-bottom:1px solid rgba(244,241,234,.3);color:rgba(244,241,234,.68);font-size:.82rem;line-height:1.7}.api-state{max-width:1440px;margin:0 auto 24px;padding:14px 18px;border:1px solid var(--red);color:var(--red);font-size:.78rem;font-weight:700;line-height:1.6}.submit-message{min-height:22px;margin:18px 0 0;color:var(--red);font-size:.76rem;font-weight:800;line-height:1.5}.honeypot{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
     .impact-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}.impact-grid>div{min-height:230px;padding:32px;border-right:1px solid var(--ink)}.impact-grid>div:nth-child(3){border:0}.impact-grid strong{display:block;font-size:clamp(4rem,7vw,6.8rem);font-weight:900;letter-spacing:-.07em;line-height:.9}.impact-grid span{display:block;margin-top:40px;font-size:.78rem;font-weight:800}.impact-note{grid-column:1/-1!important;display:grid;min-height:180px!important;grid-template-columns:1fr 2fr;align-items:end;border-top:1px solid var(--ink)!important;border-right:0!important}.impact-note p{margin:0;color:var(--red);font-weight:800}.impact-note strong{max-width:760px;justify-self:end;font-size:clamp(1.8rem,3vw,3rem);line-height:1.15;text-align:right}
     footer{display:grid;min-height:260px;grid-template-columns:1fr 1.3fr;gap:32px;align-content:center;padding:60px 0;border-top:1px solid var(--ink)}footer .brand{grid-row:span 2}footer>p{margin:0;font-weight:800}footer>div{display:flex;gap:24px}footer button{padding:0;border:0;border-bottom:1px solid transparent;background:transparent;font-weight:700;cursor:pointer}footer button:hover{border-color:var(--red)}footer>span{grid-column:2;color:var(--muted);font-size:.7rem}
     .backdrop{position:fixed;z-index:100;inset:0;display:none;justify-content:end;background:rgba(17,17,17,.52)}.backdrop.open{display:flex}.panel{position:relative;width:min(680px,100%);height:100%;overflow:auto;padding:34px clamp(28px,5vw,70px) 60px;background:var(--paper);animation:in .28s cubic-bezier(.22,1,.36,1)}.close{display:block;min-height:44px;margin:0 0 64px auto;padding:0;border:0;border-bottom:1px solid var(--ink);background:transparent;font-size:.7rem;font-weight:800;cursor:pointer}.kicker{margin:0 0 14px;color:var(--red);font-size:.72rem;font-weight:800;letter-spacing:.08em}.panel h2{margin:0;font-size:clamp(3rem,6vw,5.2rem);font-weight:900;letter-spacing:-.065em;line-height:.95}.panel-sub{margin:12px 0 32px;color:var(--muted);font-weight:700}.facts{display:grid;grid-template-columns:1fr 1fr;margin:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}.facts div{padding:20px 20px 20px 0;border-bottom:1px solid var(--soft)}.facts div:nth-child(odd){border-right:1px solid var(--ink)}.facts div:nth-child(even){padding-left:20px}.facts dt{margin-bottom:8px;color:var(--muted);font-size:.65rem;font-weight:800}.facts dd{margin:0;font-size:.9rem;font-weight:800}.copy{padding:30px 0}.copy h3{margin:0 0 12px;font-size:.74rem}.copy p{margin:0 0 28px;line-height:1.8}.requirements{margin:0;padding:0;list-style:none}.requirements li{display:grid;min-height:50px;grid-template-columns:44px 1fr;align-items:center;border-top:1px solid var(--soft);font-size:.86rem}.requirements span{color:var(--red);font-size:.68rem;font-weight:800}.primary{width:100%;min-height:64px;padding:0 20px;border:1px solid var(--ink);border-radius:0;background:var(--ink);color:var(--paper);font-size:.82rem;font-weight:800;text-align:left;cursor:pointer}.primary:hover{background:var(--red)}.primary:disabled{background:var(--soft);color:var(--muted)}
-    .form-event{margin:16px 0 36px;padding-bottom:20px;border-bottom:1px solid var(--ink);color:var(--muted);font-weight:700}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 18px}.form-grid label{display:block}.form-grid label>span{display:block;margin-bottom:8px;font-size:.65rem;font-weight:800}.form-grid input,.form-grid textarea{width:100%;padding:10px 0;border:0;border-bottom:1px solid var(--ink);border-radius:0;outline:0;background:transparent}.form-grid .wide{grid-column:1/-1}.consent{display:grid!important;grid-template-columns:22px 1fr;gap:10px}.consent input{width:16px;height:16px;margin:2px 0;accent-color:var(--red)}.consent span{line-height:1.55}.note{margin:24px 0;color:var(--muted);font-size:.68rem;line-height:1.6}.success-mark{display:grid;width:40px;height:40px;margin-bottom:36px;place-items:center;background:var(--red);color:#fff;font-weight:900}.success p{line-height:1.75}.success dl{margin:26px 0;border-top:1px solid var(--ink)}.success dl div{display:grid;grid-template-columns:110px 1fr;padding:16px 0;border-bottom:1px solid var(--ink)}.success dt{color:var(--muted);font-size:.7rem;font-weight:800}.success dd{margin:0;font-weight:800}
+    .form-event{margin:16px 0 36px;padding-bottom:20px;border-bottom:1px solid var(--ink);color:var(--muted);font-weight:700}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 18px}.form-grid label{display:block}.form-grid label>span{display:block;margin-bottom:8px;font-size:.65rem;font-weight:800}.form-grid input,.form-grid textarea{width:100%;padding:10px 0;border:0;border-bottom:1px solid var(--ink);border-radius:0;outline:0;background:transparent}.form-grid .wide{grid-column:1/-1}.consent{display:grid!important;grid-template-columns:22px 1fr;gap:10px}.consent input{width:16px;height:16px;margin:2px 0;accent-color:var(--red)}.consent span{line-height:1.55}.consent a,footer a{color:inherit;text-decoration-color:var(--red);text-underline-offset:3px}.note{margin:24px 0;color:var(--muted);font-size:.68rem;line-height:1.6}.success-mark{display:grid;width:40px;height:40px;margin-bottom:36px;place-items:center;background:var(--red);color:#fff;font-weight:900}.success p{line-height:1.75}.success dl{margin:26px 0;border-top:1px solid var(--ink)}.success dl div{display:grid;grid-template-columns:110px 1fr;padding:16px 0;border-bottom:1px solid var(--ink)}.success dt{color:var(--muted);font-size:.7rem;font-weight:800}.success dd{margin:0;font-weight:800}
     @keyframes in{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
-    @media(max-width:980px){header,.hero,.calls,.opportunities,.impact,footer{width:calc(100% - 48px)}nav{display:none}.menu{display:block}.featured button,.featured button+button{padding-right:20px;padding-left:20px}.featured button:first-child{padding-left:0}.section-head{grid-template-columns:54px 1fr}.section-head .intro{grid-column:2;justify-self:start}.activity{grid-template-columns:1fr 170px}.activity-main{grid-template-columns:120px 1fr}.activity-meta{grid-column:2;grid-template-columns:repeat(3,auto)}.service-list article{grid-template-columns:110px 150px 1fr}.service-list article>div:last-of-type,.ref{grid-column:3}}
-    @media(max-width:700px){header,.hero,.calls,.opportunities,.impact,footer{width:calc(100% - 40px)}header{min-height:88px}.brand b{font-size:2.35rem}.brand small{font-size:.76rem}.hero{padding:76px 0 50px}h1{font-size:clamp(3.15rem,15vw,5rem);line-height:.9}.hero-cn{font-size:clamp(2.1rem,10vw,3.5rem)}.cta{grid-template-columns:1fr}.cta span{min-height:54px}.cta span+span{justify-content:flex-start;border-top:1px solid var(--ink);border-left:0}.featured{grid-template-columns:1fr}.featured button,.featured button+button,.featured button:first-child{min-height:188px;padding:22px 0;border-right:0;border-bottom:1px solid var(--ink)}.opportunities,.impact{padding:80px 0}.section-head{grid-template-columns:40px 1fr;gap:16px;margin-bottom:48px}.section-head h2{font-size:clamp(2.4rem,12vw,3.5rem)}.section-head .intro{grid-column:1/-1;margin-top:16px}.filters{grid-template-columns:1fr 105px}.filters label:first-child{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--ink)}.filters label,.result{min-height:82px;padding:14px}.tabs{gap:6px 16px;padding:18px 0}.activity{grid-template-columns:1fr}.activity-main{grid-template-columns:90px 1fr;padding:24px 0;border-right:0}.activity time strong{font-size:3rem}.activity-meta{grid-column:1/-1;grid-template-columns:1fr;padding-top:12px}.activity-action{min-height:94px;padding:16px 0;border-top:1px solid var(--soft)}.service{padding:80px 20px}.service-list article{grid-template-columns:1fr 1fr;gap:12px;padding:22px 0}.service-list article>div,.service-list article>div:last-of-type,.ref{grid-column:1/-1}.impact-grid{grid-template-columns:1fr}.impact-grid>div,.impact-grid>div:nth-child(3){min-height:180px;border-right:0;border-bottom:1px solid var(--ink)}.impact-note{grid-column:1!important;grid-template-columns:1fr;gap:30px}.impact-note strong{justify-self:start;text-align:left}footer{grid-template-columns:1fr}footer .brand{grid-row:auto}footer>span{grid-column:1}footer>div{flex-direction:column;gap:12px}.facts,.form-grid{grid-template-columns:1fr}.facts div,.facts div:nth-child(even),.facts div:nth-child(odd){padding:18px 0;border-right:0;border-bottom:1px solid var(--soft)}.form-grid .wide{grid-column:1}}
+    @media(max-width:980px){header,.hero,.calls,.opportunities,.impact,footer{width:calc(100% - 48px)}nav{display:none}.menu{display:block}.featured button,.featured button+button{padding-right:20px;padding-left:20px}.featured button:first-child{padding-left:0}.section-head{grid-template-columns:54px 1fr}.section-head .intro{grid-column:2;justify-self:start}.activity{grid-template-columns:1fr 170px}.activity-main{grid-template-columns:120px 1fr}.activity-meta{grid-column:2;grid-template-columns:repeat(3,auto)}.lookup{grid-template-columns:1fr 1fr}.lookup button{grid-column:1/-1;min-height:58px}.service-list article{grid-template-columns:110px 150px 1fr}.service-list article>div:last-of-type,.ref{grid-column:3}}
+    @media(max-width:700px){header,.hero,.calls,.opportunities,.impact,footer{width:calc(100% - 40px)}header{min-height:88px}.brand b{font-size:2.35rem}.brand small{font-size:.76rem}.hero{padding:76px 0 50px}h1{font-size:clamp(3.15rem,15vw,5rem);line-height:.9}.hero-cn{font-size:clamp(2.1rem,10vw,3.5rem)}.cta{grid-template-columns:1fr}.cta span{min-height:54px}.cta span+span{justify-content:flex-start;border-top:1px solid var(--ink);border-left:0}.featured{grid-template-columns:1fr}.featured button,.featured button+button,.featured button:first-child{min-height:188px;padding:22px 0;border-right:0;border-bottom:1px solid var(--ink)}.opportunities,.impact{padding:80px 0}.section-head{grid-template-columns:40px 1fr;gap:16px;margin-bottom:48px}.section-head h2{font-size:clamp(2.4rem,12vw,3.5rem)}.section-head .intro{grid-column:1/-1;margin-top:16px}.filters{grid-template-columns:1fr 105px}.filters label:first-child{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--ink)}.filters label,.result{min-height:82px;padding:14px}.tabs{gap:6px 16px;padding:18px 0}.activity{grid-template-columns:1fr}.activity-main{grid-template-columns:90px 1fr;padding:24px 0;border-right:0}.activity time strong{font-size:3rem}.activity-meta{grid-column:1/-1;grid-template-columns:1fr;padding-top:12px}.activity-action{min-height:94px;padding:16px 0;border-top:1px solid var(--soft)}.service{padding:80px 20px}.lookup{grid-template-columns:1fr}.lookup label{border-right:0;border-bottom:1px solid rgba(244,241,234,.3)}.lookup button{grid-column:1;min-height:58px}.service-list article{grid-template-columns:1fr 1fr;gap:12px;padding:22px 0}.service-list article>div,.service-list article>div:last-of-type,.ref{grid-column:1/-1}.impact-grid{grid-template-columns:1fr}.impact-grid>div,.impact-grid>div:nth-child(3){min-height:180px;border-right:0;border-bottom:1px solid var(--ink)}.impact-note{grid-column:1!important;grid-template-columns:1fr;gap:30px}.impact-note strong{justify-self:start;text-align:left}footer{grid-template-columns:1fr}footer .brand{grid-row:auto}footer>span{grid-column:1}footer>div{flex-direction:column;gap:12px}.facts,.form-grid{grid-template-columns:1fr}.facts div,.facts div:nth-child(even),.facts div:nth-child(odd){padding:18px 0;border-right:0;border-bottom:1px solid var(--soft)}.form-grid .wide{grid-column:1}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
   </style>
 </head>
@@ -57,7 +58,7 @@
     </section>
 
     <section class="calls">
-      <div class="section-label"><h2>OPEN CALLS / 开放报名</h2><button data-go="opportunities">VIEW ALL 06 →</button></div>
+      <div class="section-label"><h2>OPEN CALLS / 开放报名</h2><button data-go="opportunities" id="view-all">VIEW ALL →</button></div>
       <div class="featured" id="featured"></div>
     </section>
 
@@ -69,8 +70,8 @@
       </div>
       <div class="filters">
         <label><span>SEARCH / 搜索</span><input id="search" type="search" placeholder="活动、地点或类别"></label>
-        <label><span>DISTRICT / 区域</span><select id="district"><option>全部区域</option><option>福田区</option><option>罗湖区</option><option>南山区</option><option>盐田区</option><option>宝安区</option></select></label>
-        <div class="result"><span>RESULTS / 结果</span><b id="result-count">06</b></div>
+        <label><span>DISTRICT / 区域</span><select id="district"><option>全部区域</option></select></label>
+        <div class="result"><span>RESULTS / 结果</span><b id="result-count">00</b></div>
       </div>
       <div class="tabs" id="tabs" aria-label="服务类别"></div>
       <div id="activity-list"></div>
@@ -81,9 +82,16 @@
       <div class="section-head">
         <span class="section-no">03</span>
         <div><p>MY SERVICE</p><h2>我的报名</h2></div>
-        <p class="intro">报名状态、服务时间与活动提醒，集中在同一条清晰的时间线上。</p>
+        <p class="intro">使用报名编号与报名手机号查询最新审核状态。我们不会在此设备长期保存手机号。</p>
       </div>
+      <div class="api-state" id="api-state" hidden>服务正在配置中，暂时无法提交或查询报名。</div>
+      <form class="lookup" id="lookup-form">
+        <label><span>REFERENCE / 报名编号</span><input id="lookup-reference" placeholder="CIVIC-20260803-ABC12345" autocomplete="off" required></label>
+        <label><span>MOBILE / 报名手机号</span><input id="lookup-phone" type="tel" inputmode="numeric" placeholder="13800000000" autocomplete="tel" required></label>
+        <button type="submit">CHECK STATUS / 查询状态 →</button>
+      </form>
       <div class="service-list" id="service-list"></div>
+      <p class="service-message" id="service-message">输入报名编号和手机号即可查询；提交成功后，报名编号也会显示在这里。</p>
     </section>
 
     <section class="impact" id="impact">
@@ -93,9 +101,9 @@
         <p class="intro">不只记录时长，也记录每次行动所连接的人、社区与城市议题。</p>
       </div>
       <div class="impact-grid">
-        <div><strong>27.5</strong><span>服务小时 / HOURS</span></div>
-        <div><strong>08</strong><span>完成项目 / PROJECTS</span></div>
-        <div><strong>04</strong><span>关注议题 / CAUSES</span></div>
+        <div><strong>SAFE</strong><span>敏感信息加密存储 / PRIVACY</span></div>
+        <div><strong>LIVE</strong><span>名额与状态实时同步 / REAL-TIME</span></div>
+        <div><strong>CLEAR</strong><span>每次管理操作留痕 / AUDITABLE</span></div>
         <div class="impact-note"><p>2026</p><strong>一座城市的改变，由无数具体行动共同发生。</strong></div>
       </div>
     </section>
@@ -105,7 +113,7 @@
     <a class="brand" href="#top"><b>CIVIC</b><small>志愿服务平台</small></a>
     <p>OPEN, ACCESSIBLE, ACTION-ORIENTED.</p>
     <div><button data-go="opportunities">发现活动</button><button data-go="service">我的报名</button><button data-go="impact">志愿足迹</button></div>
-    <span>© 2026 CIVIC SHENZHEN</span>
+    <span>© 2026 CIVIC SHENZHEN · <a href="./privacy.html">隐私说明</a> · <a href="./admin.html">管理后台</a></span>
   </footer>
 
   <div class="backdrop" id="backdrop">
@@ -115,7 +123,7 @@
     </section>
   </div>
 
-  <script>
+  <script type="text/plain" id="legacy-demo-script">
     const activities=[
       {id:1,title:"海岸净滩",en:"Coastal Cleanup",day:"03",month:"AUG",year:"2026",date:"2026年8月3日",time:"08:30–11:30",district:"南山区",location:"深圳湾公园日出剧场",category:"生态环保",categoryEn:"Environment",joined:12,capacity:40,hours:3,description:"沿深圳湾海岸线开展净滩、垃圾分类记录与公众倡导，让一次志愿行动同时成为一份城市海岸观察。",requirements:["年满16周岁","可持续完成3小时户外活动","自备饮用水与防晒用品"]},
       {id:2,title:"阅读陪伴",en:"Reading Companions",day:"09",month:"AUG",year:"2026",date:"2026年8月9日",time:"14:00–17:00",district:"福田区",location:"香蜜公园儿童图书馆",category:"儿童关爱",categoryEn:"Children",joined:8,capacity:24,hours:3,description:"通过绘本共读、故事表达与创意游戏，为儿童提供稳定、友好的阅读陪伴。",requirements:["年满18周岁","普通话表达清晰","活动前完成30分钟线上培训"]},
@@ -170,6 +178,237 @@
     $("#close").onclick=closePanel;$("#backdrop").onclick=e=>{if(e.target===e.currentTarget)closePanel()};document.addEventListener("keydown",e=>{if(e.key==="Escape")closePanel()});
     $("#search").oninput=renderActivities;$("#district").onchange=renderActivities;
     renderFeatured();renderTabs();renderActivities();renderService();
+  </script>
+  <script>
+    const cfg=window.CIVIC_CONFIG||{};
+    const API=String(cfg.apiBase||"").replace(/\/$/,"");
+    const $=selector=>document.querySelector(selector);
+    const esc=value=>String(value??"").replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[char]));
+    const statusLabels={pending:"待审核",approved:"已通过",waitlisted:"候补",rejected:"未通过",cancelled:"已取消"};
+    let activities=[],activeCategory="全部",selected=null,mode="detail",latestRegistration=null;
+
+    function requestId(){
+      if(crypto.randomUUID)return crypto.randomUUID();
+      return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,c=>{
+        const r=crypto.getRandomValues(new Uint8Array(1))[0]%16;
+        return (c==="x"?r:(r&3)|8).toString(16);
+      });
+    }
+
+    async function request(path,options={}){
+      if(!API)throw new Error("服务尚未配置，请稍后再试。");
+      const response=await fetch(`${API}${path}`,{
+        ...options,
+        headers:{"Content-Type":"application/json","X-Request-ID":requestId(),...(options.headers||{})},
+      });
+      const type=response.headers.get("content-type")||"";
+      const data=type.includes("application/json")?await response.json():null;
+      if(!response.ok)throw new Error(data?.message||"服务暂时不可用，请稍后再试。");
+      return data;
+    }
+
+    function formatDate(value){
+      if(!value)return "";
+      const date=new Date(`${value}T00:00:00`);
+      return Number.isNaN(date.valueOf())?value:new Intl.DateTimeFormat("zh-CN",{year:"numeric",month:"long",day:"numeric"}).format(date);
+    }
+
+    function normalizeActivity(activity){
+      return {
+        ...activity,
+        en:activity.titleEn,
+        hours:activity.serviceHours,
+        joined:Number(activity.registeredCount||0),
+        remaining:Number(activity.remaining||0),
+        dateLabel:formatDate(activity.date),
+      };
+    }
+
+    document.querySelectorAll("[data-go]").forEach(button=>{
+      button.onclick=()=>document.getElementById(button.dataset.go).scrollIntoView({behavior:"smooth"});
+    });
+
+    function renderFeatured(){
+      $("#featured").innerHTML=activities.length
+        ?activities.slice(0,3).map((activity,index)=>`<button data-id="${esc(activity.id)}" aria-label="查看${esc(activity.title)}详情"><span class="item-no">0${index+1}</span><span class="item-title">${esc(activity.en)} / ${esc(activity.title)}</span><span class="date"><strong>${esc(activity.day)}</strong><span>${esc(activity.month)} ${esc(activity.year)}</span></span><span class="places"><strong>${esc(activity.joined)}</strong><span>/ ${esc(activity.capacity)} PLACES</span></span></button>`).join("")
+        :`<p class="service-message">当前暂无开放活动。</p>`;
+      $("#featured").querySelectorAll("button").forEach(button=>button.onclick=()=>openPanel(button.dataset.id));
+      $("#view-all").textContent=`VIEW ALL ${String(activities.length).padStart(2,"0")} →`;
+    }
+
+    function renderFilters(){
+      const categories=["全部",...new Set(activities.map(activity=>activity.category).filter(Boolean))];
+      const districts=["全部区域",...new Set(activities.map(activity=>activity.district).filter(Boolean))];
+      if(!categories.includes(activeCategory))activeCategory="全部";
+      $("#tabs").innerHTML=categories.map(category=>`<button class="${category===activeCategory?"active":""}" data-cat="${esc(category)}">${esc(category)}</button>`).join("");
+      $("#tabs").querySelectorAll("button").forEach(button=>button.onclick=()=>{activeCategory=button.dataset.cat;renderFilters();renderActivities()});
+      const selectedDistrict=$("#district").value||"全部区域";
+      $("#district").innerHTML=districts.map(district=>`<option ${district===selectedDistrict?"selected":""}>${esc(district)}</option>`).join("");
+    }
+
+    function renderActivities(){
+      const query=$("#search").value.trim().toLowerCase();
+      const district=$("#district").value;
+      const list=activities.filter(activity=>
+        (activeCategory==="全部"||activity.category===activeCategory)&&
+        (district==="全部区域"||activity.district===district)&&
+        (!query||`${activity.title} ${activity.en} ${activity.location} ${activity.category}`.toLowerCase().includes(query))
+      );
+      $("#result-count").textContent=String(list.length).padStart(2,"0");
+      $("#empty").classList.toggle("show",!list.length);
+      $("#activity-list").innerHTML=list.map(activity=>{
+        const full=!activity.registrationOpen||activity.remaining<=0;
+        return `<article class="activity"><button class="activity-main" data-detail="${esc(activity.id)}"><time><strong>${esc(activity.day)}</strong><span>${esc(activity.month)}<br>${esc(activity.year)}</span></time><div class="activity-title"><p>${esc(activity.categoryEn)} / ${esc(activity.category)}</p><h3>${esc(activity.title)}</h3><span>${esc(activity.en)}</span></div><div class="activity-meta"><span>${esc(activity.district)}</span><span>${esc(activity.time)}</span><span>${esc(activity.hours)} SERVICE HOURS</span></div></button><div class="activity-action"><span class="status">${full?"CLOSED / 已关闭":`${esc(activity.remaining)} PLACES / 剩余${esc(activity.remaining)}席`}</span><button data-apply="${esc(activity.id)}" ${full||!API?"disabled":""}>${full?"CLOSED / 已关闭":"APPLY / 报名"} →</button></div></article>`;
+      }).join("");
+      document.querySelectorAll("[data-detail]").forEach(button=>button.onclick=()=>openPanel(button.dataset.detail));
+      document.querySelectorAll("[data-apply]").forEach(button=>button.onclick=()=>openPanel(button.dataset.apply,"form"));
+    }
+
+    function renderService(registration=latestRegistration){
+      if(!registration){
+        $("#service-list").innerHTML="";
+        return;
+      }
+      const label=statusLabels[registration.status]||registration.status;
+      $("#service-list").innerHTML=`<article><span class="service-status">${esc(label)}</span><time>${esc(formatDate(registration.date))}</time><div><h3>${esc(registration.activityTitle)}</h3><p>${esc(registration.activityTitleEn||"")}</p></div><div><p>${esc(registration.time||"")}</p><p>${esc(registration.location||"")}</p></div><span class="ref">${esc(registration.reference)}</span></article>`;
+    }
+
+    function openPanel(id,nextMode="detail"){
+      selected=activities.find(activity=>activity.id===id);
+      if(!selected)return;
+      mode=nextMode;
+      $("#backdrop").classList.add("open");
+      document.body.classList.add("lock");
+      renderPanel();
+    }
+
+    function closePanel(){
+      $("#backdrop").classList.remove("open");
+      document.body.classList.remove("lock");
+      selected=null;
+      mode="detail";
+    }
+
+    function renderPanel(){
+      const activity=selected;
+      if(!activity)return;
+      if(mode==="success"){
+        $("#panel-content").innerHTML=`<div class="success"><span class="success-mark">✓</span><p class="kicker">APPLICATION RECEIVED</p><h2 id="panel-title">报名已提交</h2><p>我们已收到你对“${esc(activity.title)}”的报名申请。请妥善保存报名编号，用于查询审核状态。</p><dl><div><dt>申请编号</dt><dd>${esc(latestRegistration.reference)}</dd></div><div><dt>当前状态</dt><dd>${esc(statusLabels[latestRegistration.status]||latestRegistration.status)}</dd></div></dl><button class="primary" id="view-service">CHECK MY STATUS / 查看报名状态 →</button></div>`;
+        $("#view-service").onclick=()=>{
+          $("#lookup-reference").value=latestRegistration.reference;
+          closePanel();
+          setTimeout(()=>$("#service").scrollIntoView({behavior:"smooth"}),50);
+        };
+        return;
+      }
+      if(mode==="form"){
+        $("#panel-content").innerHTML=`<form id="apply-form"><p class="kicker">APPLICATION / 志愿报名</p><h2 id="panel-title">${esc(activity.title)}</h2><p class="form-event">${esc(activity.dateLabel)} · ${esc(activity.time)} · ${esc(activity.district)}</p><div class="form-grid"><label><span>姓名 NAME *</span><input name="name" autocomplete="name" maxlength="40" required></label><label><span>手机 MOBILE *</span><input name="phone" type="tel" inputmode="numeric" autocomplete="tel" pattern="(\\+?86)?1[3-9][0-9]{9}" placeholder="13800000000" required></label><label><span>电子邮箱 EMAIL *</span><input name="email" type="email" autocomplete="email" maxlength="160" required></label><label><span>出生年份 YEAR OF BIRTH *</span><input name="birthYear" type="number" min="1940" max="${new Date().getFullYear()-16}" required></label><label class="wide"><span>相关经验 EXPERIENCE</span><textarea name="experience" rows="3" maxlength="800" placeholder="请简要说明相关服务经验；没有可填写“无”。"></textarea></label><label class="consent wide"><input name="consent" type="checkbox" required><span>我已阅读<a href="./privacy.html" target="_blank" rel="noopener">《隐私说明》</a>，确认所填信息真实，并同意将信息用于本次志愿服务的组织、联络、安全保障与报名审核。</span></label><label class="honeypot" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label></div><p class="note">PRIVACY / 姓名、手机号、邮箱等敏感信息将加密存储，仅授权管理员可查看。</p><p class="submit-message" id="submit-message" aria-live="polite"></p><button class="primary" type="submit">SUBMIT APPLICATION / 提交报名 →</button></form>`;
+        $("#apply-form").onsubmit=submitRegistration;
+        return;
+      }
+      const closed=!activity.registrationOpen||activity.remaining<=0;
+      $("#panel-content").innerHTML=`<p class="kicker">${esc(activity.categoryEn)} / ${esc(activity.category)}</p><h2 id="panel-title">${esc(activity.title)}</h2><p class="panel-sub">${esc(activity.en)}</p><dl class="facts"><div><dt>DATE / 日期</dt><dd>${esc(activity.dateLabel)}</dd></div><div><dt>TIME / 时间</dt><dd>${esc(activity.time)}</dd></div><div><dt>LOCATION / 地点</dt><dd>${esc(activity.location)}</dd></div><div><dt>PLACES / 剩余名额</dt><dd>${esc(activity.remaining)} / ${esc(activity.capacity)}</dd></div></dl><div class="copy"><h3>ABOUT / 活动说明</h3><p>${esc(activity.description)}</p><h3>REQUIREMENTS / 报名条件</h3><ol class="requirements">${activity.requirements.map((requirement,index)=>`<li><span>${String(index+1).padStart(2,"0")}</span>${esc(requirement)}</li>`).join("")}</ol></div><button class="primary" id="apply-now" ${closed||!API?"disabled":""}>${closed?"CLOSED / 活动已关闭":"APPLY NOW / 立即报名 →"}</button>`;
+      if(!closed&&API)$("#apply-now").onclick=()=>{mode="form";renderPanel()};
+    }
+
+    async function submitRegistration(event){
+      event.preventDefault();
+      const form=event.currentTarget;
+      const button=form.querySelector('button[type="submit"]');
+      const message=$("#submit-message");
+      button.disabled=true;
+      button.textContent="SUBMITTING / 正在提交…";
+      message.textContent="";
+      try{
+        const data=new FormData(form);
+        const result=await request("/api/registrations",{
+          method:"POST",
+          body:JSON.stringify({
+            activityId:selected.id,
+            requestId:requestId(),
+            name:data.get("name"),
+            phone:data.get("phone"),
+            email:data.get("email"),
+            birthYear:Number(data.get("birthYear")),
+            experience:data.get("experience")||"",
+            consent:data.get("consent")==="on",
+            website:data.get("website")||"",
+          }),
+        });
+        latestRegistration={
+          reference:result.reference,
+          status:result.status,
+          activityTitle:selected.title,
+          activityTitleEn:selected.en,
+          date:selected.date,
+          time:selected.time,
+          location:selected.location,
+        };
+        localStorage.setItem("civicLastReference",result.reference);
+        renderService();
+        mode="success";
+        renderPanel();
+        await loadActivities();
+      }catch(error){
+        message.textContent=error.message;
+        button.disabled=false;
+        button.textContent="SUBMIT APPLICATION / 提交报名 →";
+      }
+    }
+
+    async function lookupRegistration(event){
+      event.preventDefault();
+      const button=event.currentTarget.querySelector("button");
+      const message=$("#service-message");
+      button.disabled=true;
+      button.textContent="CHECKING / 查询中…";
+      message.textContent="";
+      try{
+        const reference=$("#lookup-reference").value.trim().toUpperCase();
+        const phone=$("#lookup-phone").value.trim();
+        const data=await request(`/api/registrations/status?reference=${encodeURIComponent(reference)}&phone=${encodeURIComponent(phone)}`);
+        latestRegistration=data.registration;
+        localStorage.setItem("civicLastReference",latestRegistration.reference);
+        renderService();
+        message.textContent=`状态更新于 ${new Date(latestRegistration.updatedAt).toLocaleString("zh-CN")}`;
+      }catch(error){
+        latestRegistration=null;
+        renderService();
+        message.textContent=error.message;
+      }finally{
+        button.disabled=!API;
+        button.textContent="CHECK STATUS / 查询状态 →";
+      }
+    }
+
+    async function loadActivities(){
+      try{
+        const data=await request("/api/activities");
+        activities=(data.activities||[]).map(normalizeActivity);
+        $("#api-state").hidden=true;
+      }catch(error){
+        activities=[];
+        $("#api-state").hidden=false;
+        $("#api-state").textContent=error.message;
+      }
+      renderFeatured();
+      renderFilters();
+      renderActivities();
+    }
+
+    $("#close").onclick=closePanel;
+    $("#backdrop").onclick=event=>{if(event.target===event.currentTarget)closePanel()};
+    document.addEventListener("keydown",event=>{if(event.key==="Escape")closePanel()});
+    $("#search").oninput=renderActivities;
+    $("#district").onchange=renderActivities;
+    $("#lookup-form").onsubmit=lookupRegistration;
+    const lastReference=localStorage.getItem("civicLastReference");
+    if(lastReference)$("#lookup-reference").value=lastReference;
+    if(!API){
+      $("#api-state").hidden=false;
+      $("#lookup-form").querySelector("button").disabled=true;
+    }
+    loadActivities();
   </script>
 </body>
 </html>

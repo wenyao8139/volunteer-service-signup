@@ -1,0 +1,25 @@
+{
+  "name": "civic-volunteer-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "check": "node --check index.js && node --check seed.js",
+    "test": "node --test test-health.js",
+    "seed": "node seed.js"
+  },
+  "dependencies": {
+    "@cloudbase/node-sdk": "3.18.3",
+    "bcryptjs": "3.0.3",
+    "cors": "2.8.6",
+    "express": "5.2.1",
+    "express-rate-limit": "8.6.1",
+    "helmet": "8.3.0",
+    "jsonwebtoken": "9.0.3",
+    "zod": "4.4.3"
+  }
+}
